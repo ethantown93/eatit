@@ -1,0 +1,36 @@
+.navbar-brand {
+    color: #3f3042;
+    font-size: 32px;
+}
+
+.navbar-brand:hover {
+    color: #4a494b;
+    cursor: pointer;
+}
+
+#mainNav {
+    font-family: 'Fira Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.navbar-nav.ml-auto li {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.navbar-nav.ml-auto li a {
+    color: #3f3042;
+    cursor: pointer;
+    letter-spacing: .5px;
+    text-transform: uppercase;
+    padding: 15px;
+}
+
+.navbar-nav.ml-auto li a:hover {
+    color: #6f6471;
+}
+
+.fa.fa-bars.burger {
+    color: black;
+}

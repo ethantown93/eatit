@@ -1,0 +1,10 @@
+<div class="col-md-12">
+    <h1>See What Our Customers have to Say!</h1>
+    <div class='card' *ngFor='let person of customerReviews' data-aos="flip-left">
+        <img class='card-img-top' src="{{person.profilePic}}" >
+        <div class="card-body">
+            <h5 class="card-title">{{person.firstName}} {{person.lastName}}</h5>
+            <p class="card-text">"{{ person.review }}"</p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,31 @@
+footer {
+    background: #44c562;
+    height: 80px;
+    margin-top: auto;
+    position: relative;
+    color: white;
+    font-family: 'Work Sans', sans-serif;
+    text-align: center;
+    vertical-align: center;
+}
+
+footer p { 
+    padding-top: 15px;
+}
+
+
+
+@media (max-width: 767px){
+    footer {
+        margin-top: auto;
+        color: white;
+        font-family: 'Work Sans', sans-serif;
+        text-align: center;
+        height: 105px;
+    }
+
+    .map {
+        height: 75%;
+        width: 80%;
+    }
+}

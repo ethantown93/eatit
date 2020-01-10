@@ -1,0 +1,32 @@
+.col-md-12 {
+    text-align: center;
+    background-color: #f5f3ea;
+    padding-bottom: 50px;
+}
+
+h1 {
+    padding-top: 50px;
+}
+
+.card {
+    display: inline-block;
+    width: 250px;
+    min-height: 450px;
+    margin: 50px 30px;
+    vertical-align: middle;
+}
+
+.card-img-top {
+    height: 250px;
+    width: 250px;
+}
+
+@media (max-width: 767px){
+
+    .card {
+        margin: auto;
+        margin-bottom: 20px;
+        float: none;
+        display: block;
+    }
+}
