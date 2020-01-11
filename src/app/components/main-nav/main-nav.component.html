@@ -7,11 +7,11 @@
         </button>
         <div class="collapse navbar-collapse" id='navbarMain'>
             <ul id='mainNav' class="navbar-nav ml-auto">
-                <li class="nav-item"><a class="nav-link">Home <i class="fa fa-home" aria-hidden="true"></i></a></li>
+                <li class="nav-item"><a class="nav-link" routerLink='/'>Home <i class="fa fa-home" aria-hidden="true"></i></a></li>
                 <li class="nav-item"><a class="nav-link">Contact Us <i class="fa fa-phone-square" aria-hidden="true"></i></a></li>
                 <li class="nav-item"><a class="nav-link">About Us <i class="fa fa-user-circle" aria-hidden="true"></i>
                 </a></li>
-                <li class="nav-item"><a class="nav-link">Log In</a></li>
+                <li class="nav-item"><a class="nav-link" (click)='openDialog()'>Log In</a></li>
                 <!-- <li class="nav-item"><button class="btn btn-primary" *ngIf="">Sign Up</button></li> -->
             </ul>
         </div>

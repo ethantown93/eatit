@@ -11,13 +11,18 @@ import { Users } from '../../models/Users';
 })
 export class HomeComponent implements OnInit {
 
-  users: Users[];
+  firstName: string;
+  lastName: string;
+  email: string;
+  password: string;
 
   constructor(private usersService: UsersService) { }
 
   ngOnInit() {
+  }
 
-    this.usersService.getUsers().subscribe( users => console.log(users));
+  onRegister(){
+    console.log(this.firstName, this.lastName, this.email, this.password)
   }
 
 }

@@ -3,26 +3,24 @@
         <div class="contact-frm">
             <h2><strong>Get Started!</strong></h2>
             <p>Freshly cooked gourmet food delivered to your door.</p>
-            <form>
+            <form (submit)='onRegister()'>
                 <div class="form-group">
-                    <input type="text" name="firstName" class='form-control' placeholder='First Name'>
+                    <input type="text" name="firstName" [(ngModel)]='firstName' class='form-control' placeholder='First Name' required>
                 </div>
                 <div class="form-group">
-                    <input type="text" name="lastName" class='form-control' placeholder='Last Name'>
+                    <input type="text" name="lastName" [(ngModel)]='lastName'  class='form-control' placeholder='Last Name' required>
                 </div>
                 <div class="form-group">
-                    <input type="email" name="email" class='form-control' placeholder='Email'>
+                    <input type="email" name="email" [(ngModel)]='email'  class='form-control' placeholder='Email' required>
                 </div>
                 <div class="form-group">
-                    <input type="password" name="password" class='form-control' placeholder='Password'>
+                    <input type="password" name="password" [(ngModel)]='password'  class='form-control' placeholder='Password' required>
                 </div>
                 <input type="submit" value="Register" class="btn btn-success btn-block">
             </form>
             <hr>
-            <p>Already have an account? <a class='login-a'>Log In</a></p>
         </div>
     </div>
-    
     <div class="container">
         <h1>Choose one of our plans to get started.</h1>
         <hr>
