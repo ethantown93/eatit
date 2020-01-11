@@ -1,0 +1,45 @@
+<!-- <div class="container">
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <div class="card">
+                <div class="card-body">
+                    <h1 class="text-center pb-4 pt-3">
+                        <i class="fa fa-lock">Log In</i>
+                    </h1>
+                    <form (submit)='onSubmit()'>
+                        <div class="form-froup">
+                            <label for="email">Email</label>
+                            <input type="email" name="email" [(ngModel)]='email' class='form-control' required>
+                        </div>
+                        <div class="form-froup pb-4">
+                            <label for="password">Password</label>
+                            <input type="password" name="password" [(ngModel)]='password' class='form-control' required>
+                        </div>
+                        <input type="submit" value="Login" class='btn btn-success btn-block'>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+ -->
+ <div class="d-flex justify-content-center align-items-center login-container">
+    <form class="login-form text-center" (submit)='onSubmit()'>
+        <h1 class="mb-5 font-weight-light text-uppercase">Login</h1>
+        <div class="form-group">
+            <input type="text" class="form-control rounded-pill form-control-lg" placeholder="Email" name="email" [(ngModel)]='email'>
+        </div>
+        <div class="form-group">
+            <input type="password" class="form-control rounded-pill form-control-lg" placeholder="Password" name="password" [(ngModel)]='password'>
+        </div>
+        <div class="forgot-link form-group d-flex justify-content-between align-items-center">
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="remember">
+                <label class="form-check-label" for="remember">Remember Password</label>
+            </div>
+            <a href="#">Forgot Password?</a>
+        </div>
+        <button type="submit" class="btn mt-5 rounded-pill btn-lg btn-custom btn-block text-uppercase">Log in</button>
+        <p class="mt-3 font-weight-normal">Don't have an account? <a href="#"><strong>Register Now</strong></a></p>
+    </form>
+</div>
