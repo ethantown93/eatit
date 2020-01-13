@@ -1,23 +1,46 @@
 <div class="wrapper">
     <div class='home-div'>
-        <div class="contact-frm">
-            <h2><strong>Get Started!</strong></h2>
-            <p>Freshly cooked gourmet food delivered to your door.</p>
-            <form (submit)='onRegister()'>
-                <div class="form-group">
-                    <input type="text" name="firstName" [(ngModel)]='firstName' class='form-control' placeholder='First Name' required>
-                </div>
-                <div class="form-group">
-                    <input type="text" name="lastName" [(ngModel)]='lastName'  class='form-control' placeholder='Last Name' required>
-                </div>
-                <div class="form-group">
-                    <input type="email" name="email" [(ngModel)]='email'  class='form-control' placeholder='Email' required>
-                </div>
-                <div class="form-group">
-                    <input type="password" name="password" [(ngModel)]='password'  class='form-control' placeholder='Password' required>
-                </div>
-                <input type="submit" value="Register" class="btn btn-success btn-block">
-            </form>
+        <div class="contact-frm"> 
+            <div *ngIf='!hasRegistered'>
+                <h2><strong>Get Started!</strong></h2>
+                <p>Freshly cooked gourmet food delivered to your door.</p>   
+                <form (submit)='onRegister()'>
+                    <div class="form-group">
+                        <input type="email" name="email" [(ngModel)]='email'  class='form-control' placeholder='Email' required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="password" [(ngModel)]='password'  class='form-control' placeholder='Password' required>
+                    </div>
+                    <input type="submit" value="Register" class="btn btn-success btn-block">
+                </form>
+            </div>
+            <div *ngIf='hasRegistered && !userLoggedIn'>
+                <h2>Now for some personal information</h2>
+                <form #form='ngForm' (ngSubmit)='addPersonalInfo(form.value); form.reset()'>
+                    <div class="form-group">
+                        <input type="text" name='firstName' [ngModel] class='form-control' placeholder='First Name' required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="lastName" ngModel  class='form-control' placeholder='Last Name' required>
+                    </div>
+                    <div ngModelGroup='address'>
+                        <div class="form-group">
+                            <input type="text" name="streetAddress" ngModel  class='form-control' placeholder='Street Address' required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="state" ngModel class='form-control' placeholder='State' required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="zipCode" ngModel class='form-control' placeholder='Zip Code' required>
+                        </div>
+                    </div>
+                    <button type='submit' class="btn btn-success btn-block">Submit</button>
+                </form>
+            </div>
+            <div *ngIf='userLoggedIn'>
+                <h2>You're all set!</h2>
+                <p>Your account has been created. You're ready to start shopping!</p>
+            </div>
             <hr>
         </div>
     </div>
@@ -63,7 +86,7 @@
     <div class="container-2">
         <div class="home-div-2">
             <h1>Simplify Your Meals</h1>
-            <p>Get fresh weekyl meals shipped straight to your door for as little as $8 / meal.</p>
+            <p>Get fresh weekly meals shipped straight to your door for as little as $8 / meal.</p>
             <hr>
             <div class="col-md-4" data-aos="fade-up-right">
                 <i class="fa fa-hand-pointer-o fa-4x" aria-hidden="true"></i>

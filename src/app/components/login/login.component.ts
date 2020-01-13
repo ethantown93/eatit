@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
 
   email: string;
   password: string;
+  updateNavigation: boolean = true;
 
   constructor(
     private auth: AuthService,
@@ -28,15 +29,16 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['/']);
       }
     });
-    
   }
 
   onSubmit(){
     this.auth.login(this.email, this.password).then(res => {
+      console.log(res);
+      localStorage.setItem('isLoggedIn', 'true');
+      this.checkAdmin()
       this.flash.show("You are now logged in", {
       cssClass: 'alert-success', timeout: 3000 });
       this.close();
-      this.router.navigate(['/'])
     }).catch( err => {
       this.flash.show(err.message, {
         cssClass: 'alert-danger', timeout: 3000
@@ -46,6 +48,16 @@ export class LoginComponent implements OnInit {
 
   close(){
     this.dialogRef.close();
+  }
+
+  checkAdmin(){
+    let logged = localStorage.getItem('isLoggedIn');
+     if(logged == 'true'){
+      this.auth.updateNavbar(this.updateNavigation);
+        return;
+     } else {
+        alert('user is not an admin')
+     }  
   }
 
 }

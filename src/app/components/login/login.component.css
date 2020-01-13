@@ -11,24 +11,29 @@ h1 {
 .login-container{
     width: 100%;
   }
+
   .login-form{
     margin: auto;
     width: 370px;
     padding: 15px;
     max-width: 100%;
   }
+  
   .login-form .form-control{
     font-size: 15px;
     min-height: 48px;
     font-weight: 500;
   }
+
   .login-form a{
     text-decoration: none;
     color:#666;
   }
+
   .login-form a:hover{
     color:#28a745;
   }
+
   .forgot-link{
     font-size: 13px;
   }
