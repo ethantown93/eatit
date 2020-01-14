@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
   hasRegistered: boolean = false;
   updateNavigation: boolean = true;
   loggedIn: string;
-  userLoggedIn: boolean = false;
+  // userLoggedIn: boolean = false;
 
   constructor(
     private auth: AuthService,
@@ -39,12 +39,14 @@ export class HomeComponent implements OnInit {
     this.loggedIn = localStorage.getItem('isLoggedIn');
 
     if(this.loggedIn !== null){
-      this.userLoggedIn = true;
+      this.hasRegistered = false;
+      this.email = '';
+      this.password = '';
     } else {
-      this.userLoggedIn = false;
+      return;
     }
     
-    this.flash.show('Your account has been successfully created, you can now log in.', {
+    this.flash.show('Your account has been successfully created, you are now logged in.', {
       cssClass: 'alert-success', timeout: 4000
     })
     this.checkAdmin();

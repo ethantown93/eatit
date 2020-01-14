@@ -2,7 +2,9 @@ footer {
     background: #44c562;
     height: 80px;
     margin-top: auto;
-    position: relative;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
     color: white;
     font-family: 'Work Sans', sans-serif;
     text-align: center;
@@ -22,6 +24,7 @@ footer p {
         font-family: 'Work Sans', sans-serif;
         text-align: center;
         height: 105px;
+        width: 100%;
     }
 
     .map {

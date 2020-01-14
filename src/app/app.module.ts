@@ -21,6 +21,8 @@ import { LoginComponent } from './components/login/login.component';
 
 import { AuthService } from './services/auth.service'
 import { UsersService } from './services/users.service';
+import { Error404Component } from './components/error404/error404.component';
+import { ContactUsComponent } from './components/contact-us/contact-us.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { UsersService } from './services/users.service';
     MainNavComponent,
     FooterComponent,
     CustomerReviewsComponent,
-    LoginComponent
+    LoginComponent,
+    Error404Component,
+    ContactUsComponent
   ],
   imports: [
     BrowserModule,
