@@ -1,0 +1,40 @@
+.container {
+    min-height: 100%;
+    margin-top: 50px;
+    height: 80vh;
+}
+
+.container h3 {
+    text-align: center;
+}
+
+.col-md-4 {
+    margin-top: 80px;
+    text-align: center;
+    display: inline-block;
+    margin-bottom: 80px;
+}
+
+.fa.fa-phone.fa-4x {
+    color: #28a745;
+}
+
+.fa.fa-envelope.fa-4x {
+    color: #28a745;
+}
+
+.fa.fa-whatsapp.fa-4x {
+    color: #28a745;
+}
+
+@media (max-width: 767px){
+
+    .container {
+        min-height: 900px;
+    }
+
+    .col-md-4 {
+        display: block;
+        width: 95%;
+    }
+}
