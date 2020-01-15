@@ -32,4 +32,18 @@ export class UsersService {
     return this.users;
    }
 
+   getUser(userId: string): Observable<Users>{
+     this.usersDoc = this.afs.doc<Users>(`users/${userId}`)
+     this.user = this.usersDoc.snapshotChanges().pipe(map( action => {
+       if(action.payload.exists === false){
+         return null
+       } else {
+         const data = action.payload.data() as Users;
+         return data;
+       }
+     }));
+     console.log(this.user);
+     return this.user;
+   }
+
 }

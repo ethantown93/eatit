@@ -18,7 +18,7 @@ export class MainNavComponent implements OnInit {
   isLoggedin: boolean;
   loggedInUser: string;
   nav: any = []
-
+  userId: any;
   logged: boolean = true;
 
   constructor(
@@ -29,8 +29,12 @@ export class MainNavComponent implements OnInit {
     ) { }
 
   ngOnInit() {
+    this.getNav();
+    
     this.auth.updateNavBar$.subscribe( res => {
       if(res) {
+        this.userId = res.user.uid;
+        localStorage.setItem('UID', this.userId)
         this.getNav();
       } else {
         console.log('wang');
@@ -41,13 +45,11 @@ export class MainNavComponent implements OnInit {
 
     getNav(){
       this.isLoggedIn = localStorage.getItem('isLoggedIn')
-      console.log(this.isLoggedIn)
       if(this.isLoggedIn === 'true') {
           this.logged = false;
-          console.log(this.logged)
+          this.userId = localStorage.getItem('UID')
       } else {
         this.logged = true;
-        console.log(this.logged)
     }
 
   }
@@ -62,6 +64,7 @@ export class MainNavComponent implements OnInit {
     this.auth.logout()
     localStorage.clear();
     this.getNav()
+    this.router.navigate(['/'])
     this.flash.show('You have logged out.', {
       cssClass: 'alert-danger', timeout:3000
     })

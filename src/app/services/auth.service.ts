@@ -51,8 +51,8 @@ export class AuthService {
     this.afAuth.auth.signOut();
   }
 
-  updateNavbar(message){
-    this.updateNav.next(message);
+  updateNavbar(userData){
+    this.updateNav.next(userData);
   }
 
 

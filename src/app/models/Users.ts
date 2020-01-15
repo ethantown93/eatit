@@ -2,8 +2,11 @@ export interface Users {
     id: string;
     firstName: string;
     lastName: string;
-    email: string;
-    password: string;
+    address: {
+        state: string;
+        streetAddress: string;
+        zipCode: string;
+    }
 }
 
 

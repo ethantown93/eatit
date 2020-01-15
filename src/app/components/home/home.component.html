@@ -18,7 +18,7 @@
                 <h2>Now for some personal information</h2>
                 <form #form='ngForm' (ngSubmit)='addPersonalInfo(form.value); form.reset()'>
                     <div class="form-group">
-                        <input type="text" name='firstName' [ngModel] class='form-control' placeholder='First Name' required>
+                        <input type="text" name='firstName' ngModel class='form-control' placeholder='First Name' required>
                     </div>
                     <div class="form-group">
                         <input type="text" name="lastName" ngModel  class='form-control' placeholder='Last Name' required>

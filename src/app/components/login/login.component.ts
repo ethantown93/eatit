@@ -15,6 +15,7 @@ export class LoginComponent implements OnInit {
   email: string;
   password: string;
   updateNavigation: boolean = true;
+  userData: any;
 
   constructor(
     private auth: AuthService,
@@ -33,7 +34,7 @@ export class LoginComponent implements OnInit {
 
   onSubmit(){
     this.auth.login(this.email, this.password).then(res => {
-      console.log(res);
+      this.userData = res;
       localStorage.setItem('isLoggedIn', 'true');
       this.checkAdmin()
       this.flash.show("You are now logged in", {
@@ -53,7 +54,7 @@ export class LoginComponent implements OnInit {
   checkAdmin(){
     let logged = localStorage.getItem('isLoggedIn');
      if(logged == 'true'){
-      this.auth.updateNavbar(this.updateNavigation);
+      this.auth.updateNavbar(this.userData);
         return;
      } else {
         alert('user is not an admin')

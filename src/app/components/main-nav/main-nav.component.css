@@ -1,3 +1,11 @@
+.navbar.navbar-expand-md.navbar-dark {
+    border-bottom: 2px solid #3f3042;
+}
+
+.container {
+    padding-bottom: 30px;
+}
+
 .navbar-brand {
     color: #3f3042;
     font-size: 32px;
