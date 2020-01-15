@@ -1,0 +1,80 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div class="nav nav-pills nav-justified" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+        <a class="nav-link active" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home"
+          aria-selected="true">Profile</a>
+        <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab"
+          aria-controls="v-pills-profile" aria-selected="false">Orders</a>
+        <a class="nav-link" id="v-pills-payment-info-tab" data-toggle="pill" href="#v-pills-payment-info" role="tab"
+          aria-controls="v-pills-payment-info" aria-selected="false">Payment Methods</a>
+      </div>
+      <hr>
+      <div class="tab-content" id="v-pills-tabContent">
+        <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+          <div *ngIf='userData && !isEdit'>
+            <div class='edit-div'>
+              <h5 (click)='onEdit()'>Edit Information <i class="fa fa-pencil-square-o" aria-hidden="true"></i></h5>
+            </div>
+            <table class="table table-striped">
+              <tbody>
+                <tr>
+                  <th>First Name</th>
+                  <td>{{ userData.firstName }}</td>
+                </tr>
+                <tr>
+                  <th>Last Name</th>
+                  <td>{{ userData.lastName }}</td>
+                </tr>
+                <tr>
+                  <th>Street Address</th>
+                  <td>{{ userData.address.streetAddress }}</td>
+                </tr>
+                <tr>
+                  <th>State</th>
+                  <td>{{ userData.address.state }}</td>
+                </tr>
+                <tr>
+                  <th>Zip Code</th>
+                  <td>{{ userData.address.zipCode }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class='cancel-div' *ngIf='userData && isEdit'>
+            <h5 (click)='onEdit()'>Cancel <i class="fa fa-ban" aria-hidden="true"></i></h5>
+            <form #form='ngForm' (ngSubmit)='updatePersonalInfo(form.value); form.reset()' *ngIf='userData && isEdit'>
+              <div class="form-group">
+                <input type="text" name='firstName' [ngModel]='userData.firstName' class='form-control'
+                  placeholder='First Name' required>
+              </div>
+              <div class="form-group">
+                <input type="text" name="lastName" [ngModel]='userData.lastName' class='form-control'
+                  placeholder='Last Name' required>
+              </div>
+              <div ngModelGroup='address'>
+                <div class="form-group">
+                  <input type="text" name="streetAddress" [ngModel]='userData.address.streetAddress'
+                    class='form-control' placeholder='Street Address' required>
+                </div>
+                <div class="form-group">
+                  <input type="text" name="state" [ngModel]='userData.address.state' class='form-control'
+                    placeholder='State' required>
+                </div>
+                <div class="form-group">
+                  <input type="text" name="zipCode" [ngModel]='userData.address.zipCode' class='form-control'
+                    placeholder='Zip Code' required>
+                </div>
+              </div>
+              <button type='submit' class="btn btn-success btn-block">Submit</button>
+            </form>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">Orders
+        </div>
+        <div class="tab-pane fade" id="v-pills-payment-info" role="tabpanel" aria-labelledby="v-pills-payment-info-tab">
+          Payment methods</div>
+      </div>
+    </div>
+  </div>
+</div>
