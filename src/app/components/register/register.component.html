@@ -1,0 +1,44 @@
+<div class='home-div'>
+    <div class="contact-frm"> 
+        <div *ngIf='!hasRegistered'>
+            <h2><strong>Get Started!</strong></h2>
+            <p>Freshly cooked gourmet food delivered to your door.</p>   
+            <form (submit)='onRegister()'>
+                <div class="form-group">
+                    <input type="email" name="email" [(ngModel)]='email'  class='form-control' placeholder='Email' required>
+                </div>
+                <div class="form-group">
+                    <input type="password" name="password" [(ngModel)]='password'  class='form-control' placeholder='Password' required>
+                </div>
+                <input type="submit" value="Register" class="btn btn-success btn-block">
+            </form>
+        </div>
+        <div *ngIf='hasRegistered && !userLoggedIn'>
+            <h2>Now for some personal information</h2>
+            <form #form='ngForm' (ngSubmit)='addPersonalInfo(form.value); form.reset()'>
+                <div class="form-group">
+                    <input type="text" name='firstName' ngModel class='form-control' placeholder='First Name' required>
+                </div>
+                <div class="form-group">
+                    <input type="text" name="lastName" ngModel  class='form-control' placeholder='Last Name' required>
+                </div>
+                <div ngModelGroup='address'>
+                    <div class="form-group">
+                        <input type="text" name="streetAddress" ngModel  class='form-control' placeholder='Street Address' required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="city" ngModel  class='form-control' placeholder='city' required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="state" ngModel class='form-control' placeholder='State' required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="zipCode" ngModel class='form-control' placeholder='Zip Code' required>
+                    </div>
+                </div>
+                <button type='submit' class="btn btn-success btn-block" (click)='close()'>Submit</button>
+            </form>
+        </div>
+        <hr>
+    </div>
+</div>

@@ -1,0 +1,21 @@
+.contact-frm {
+    font-family: 'Fira Sans', sans-serif;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.883);
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.contact-frm h2 {
+    color: #28a745;
+}
+
+.form-control {
+    min-height: 40px;
+    font-weight: 450;
+}
+
+.form-control:focus{
+    border-color:#28a745;
+    box-shadow: 0 0 0 0.2rem rgba(50, 180, 50, 0.712);
+  }

@@ -1,0 +1,62 @@
+.container {
+    height: 100%;
+    text-align: center;
+    padding-bottom: 150px;
+    font-family: 'Fira Sans', sans-serif;
+}
+
+.col-md-12.logged-out {
+    background-color: #c2a3a66b;
+    padding: 8px;
+    margin:20px;
+    border-radius: 3px;
+}
+
+.card {
+    height: 380px;
+    width: 300px;
+    display: inline-block;
+    margin: 30px;
+    margin-bottom: 40px;
+    vertical-align: middle;
+    box-shadow: 0 12px 40px -14px #3f3042;
+
+}
+
+h3 {
+    margin-top: 20px;
+    color: #28a745;
+    cursor: pointer;
+}
+
+h3:hover {
+    color: #58bd70
+}
+
+img {
+    height: 300px;
+    width: 300px;
+    cursor: pointer;
+}
+
+img:hover {
+    transform: scale(.99);
+    transition: .5s;
+}
+
+@media (max-width: 767px){
+
+
+    .card {
+        margin: auto;
+        margin-top: 30px;
+        height: 380px;
+        width: 300px;
+    }
+
+    .img {
+
+        height: 250px;
+        width: 250px;
+    }
+}
