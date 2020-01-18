@@ -167,6 +167,7 @@
 
 @media (max-width: 767px){
     .contact-frm {
+        top:5%;
         width: 95%;
     }
 

@@ -20,8 +20,13 @@ export class AuthService {
   logOut: Observable<any>;
   userUID: string;
 
+  //update navigation subject
   private updateNav = new Subject<any>();
   updateNavBar$ = this.updateNav.asObservable();
+
+  // user has registered subject
+  private userRegistered = new Subject<any>();
+  userRegister$ = this.userRegistered.asObservable();
 
   login(email: string, password: string ) {
     return new Promise((resolve, reject) => {
@@ -33,7 +38,7 @@ export class AuthService {
   onRegister(email: string, password: string){
     return new Promise((resolve, reject) => {
       this.afAuth.auth.createUserWithEmailAndPassword(email, password).then(
-        res => { localStorage.setItem('UID', res.user.uid), resolve(res), err => reject(err)}
+        res => {this.userUID = res.user.uid, console.log(this.userUID), resolve(res), err => reject(err)}
       )
     })
   }
@@ -55,6 +60,8 @@ export class AuthService {
     this.updateNav.next(userData);
   }
 
-
+  userHasRegistered(hasRegistered){
+    this.userRegistered.next(hasRegistered);
+  }
 
 }

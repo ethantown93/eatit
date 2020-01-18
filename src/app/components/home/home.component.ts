@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -13,13 +14,14 @@ export class HomeComponent implements OnInit {
   email: string;
   password: string;
   hasRegistered: boolean = false;
-  updateNavigation: boolean = true;
+  updateNavigation: any;
   loggedIn: string;
-  // userLoggedIn: boolean = false;
+  userData: any;
 
   constructor(
     private auth: AuthService,
-    private flash: FlashMessagesService
+    private flash: FlashMessagesService,
+    private router: Router
     ) { }
 
   ngOnInit() {
@@ -27,14 +29,17 @@ export class HomeComponent implements OnInit {
 
   onRegister(){
     this.auth.onRegister(this.email, this.password).then( response => {
+      this.userData = response;
       localStorage.setItem('isLoggedIn', 'true');
-      console.log('success')
+      localStorage.setItem('UID', this.userData.user.uid);
+      this.updateNavigation = this.userData.user.uid;
+      console.log(this.updateNavigation);
     })
     this.hasRegistered = true;
   }
 
   addPersonalInfo(form: NgForm){
-    console.log(form)
+
     this.auth.userPersonalInfoRegister(form);
     this.loggedIn = localStorage.getItem('isLoggedIn');
 
@@ -50,17 +55,38 @@ export class HomeComponent implements OnInit {
       cssClass: 'alert-success', timeout: 4000
     })
     this.checkAdmin();
-    localStorage.removeItem('UID')
+
   }
 
   checkAdmin(){
     let logged = localStorage.getItem('isLoggedIn');
+    console.log(logged)
      if(logged == 'true'){
       this.auth.updateNavbar(this.updateNavigation);
         return;
      } else {
         alert('user is not an admin')
      }  
+  }
+
+  plan4(){
+    localStorage.setItem('mealPlan', '4');
+    this.router.navigate(['/menu'])
+  }
+
+  plan8(){
+    localStorage.setItem('mealPlan', '8');
+    this.router.navigate(['/menu'])
+  }
+
+  plan12(){
+    localStorage.setItem('mealPlan', '12');
+    this.router.navigate(['/menu'])
+  }
+
+  plan16(){
+    localStorage.setItem('mealPlan', '16');
+    this.router.navigate(['/menu'])
   }
 
 }

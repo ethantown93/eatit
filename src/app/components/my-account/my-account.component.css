@@ -33,6 +33,11 @@
     margin-bottom: 20px;
 }
 
+.loader-div {
+    text-align: center
+}
+
+
 @media (max-width: 767px){
 
     .container {

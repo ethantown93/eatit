@@ -35,6 +35,7 @@ export class LoginComponent implements OnInit {
   onSubmit(){
     this.auth.login(this.email, this.password).then(res => {
       this.userData = res;
+      console.log(this.userData)
       localStorage.setItem('isLoggedIn', 'true');
       this.checkAdmin()
       this.flash.show("You are now logged in", {

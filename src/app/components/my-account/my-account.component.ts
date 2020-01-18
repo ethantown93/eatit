@@ -17,6 +17,7 @@ export class MyAccountComponent implements OnInit {
   userData: any;
   isEdit: boolean = false;
   editH5: boolean = false;
+  loading: boolean = true;
 
   constructor(
     private route: ActivatedRoute,
@@ -30,7 +31,7 @@ export class MyAccountComponent implements OnInit {
     this.user.getUser(this.userId).subscribe( res => {
       this.usersData = res;
       this.userData = this.usersData.data;
-      console.log(this.userData)
+      this.loading = false;
 
     })
   }

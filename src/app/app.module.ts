@@ -21,10 +21,13 @@ import { LoginComponent } from './components/login/login.component';
 
 import { AuthService } from './services/auth.service'
 import { UsersService } from './services/users.service';
+import { MenuService } from './services/menu.service';
 
 import { Error404Component } from './components/error404/error404.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
 import { MyAccountComponent } from './components/my-account/my-account.component';
+import { MenuComponent } from './components/menu/menu.component';
+import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +39,9 @@ import { MyAccountComponent } from './components/my-account/my-account.component
     LoginComponent,
     Error404Component,
     ContactUsComponent,
-    MyAccountComponent
+    MyAccountComponent,
+    MenuComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -51,8 +56,8 @@ import { MyAccountComponent } from './components/my-account/my-account.component
     BrowserAnimationsModule,
 
   ],
-  entryComponents: [LoginComponent],
-  providers: [AuthService, UsersService,     
+  entryComponents: [LoginComponent, RegisterComponent],
+  providers: [AuthService, UsersService, MenuService,     
     {
     provide: MatDialogRef,
     useValue: {}
