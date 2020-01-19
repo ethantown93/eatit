@@ -33,15 +33,20 @@ h3:hover {
     color: #58bd70
 }
 
-img {
+.card-img-top {
     height: 300px;
     width: 300px;
     cursor: pointer;
 }
 
-img:hover {
+.card-img-top:hover {
     transform: scale(.99);
     transition: .5s;
+}
+
+a {
+    color: blue;
+    cursor: pointer;
 }
 
 @media (max-width: 767px){
@@ -50,13 +55,18 @@ img:hover {
     .card {
         margin: auto;
         margin-top: 30px;
-        height: 380px;
-        width: 300px;
+        height: 330px;
+        width: 250px;
     }
 
-    .img {
+    .card-img-top {
 
         height: 250px;
         width: 250px;
+    }
+
+    .col-md-12.logged-out {
+        margin: auto;
+        margin-top: 10px;
     }
 }

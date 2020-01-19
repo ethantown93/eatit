@@ -1,6 +1,6 @@
 <div class="container">
     <div class="col-md-12 logged-out" *ngIf='isLoggedIn'><h5>It looks like you're not logged in. Please log in to continue.</h5>
-        <p>Don't have an account yet? <button class="btn btn-primary" (click)='openDialog()'>Register</button></p>
+        <p>Don't have an account yet? <a (click)='openDialog()'>Register</a></p>
     </div>
     <div class="col-md-12">
         <div class="card" *ngFor='let item of menuItems'>

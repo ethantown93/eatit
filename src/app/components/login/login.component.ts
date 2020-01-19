@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     this.auth.getAuth().subscribe(auth => {
       if(auth){
-        this.router.navigate(['/']);
+        console.log('success');
       }
     });
   }
@@ -56,6 +56,7 @@ export class LoginComponent implements OnInit {
     let logged = localStorage.getItem('isLoggedIn');
      if(logged == 'true'){
       this.auth.updateNavbar(this.userData);
+      this.auth.userHasRegistered('user registered');
         return;
      } else {
         alert('user is not an admin')
