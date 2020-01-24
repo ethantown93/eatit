@@ -30,14 +30,16 @@ export class MyAccountComponent implements OnInit {
 
     this.user.getUser(this.userId).subscribe( res => {
       this.usersData = res;
-      this.userData = this.usersData.data;
+      this.userData = this.usersData;
       this.loading = false;
 
     })
   }
 
-  updatePersonalInfo(form: NgForm){
+  updatePersonalInfo(form: NgForm, id){
     console.log(form)
+    id = this.userId 
+    this.user.updateUserInfo(form, id);
     this.isEdit = !this.isEdit;
   }
 

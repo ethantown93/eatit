@@ -44,7 +44,7 @@ export class AuthService {
 
   userPersonalInfoRegister(data){
     let user = localStorage.getItem('UID')
-    this.afs.collection('users').doc(user).set({data});
+    this.afs.collection('users').doc(user).set(data);
   }
 
   getAuth(){

@@ -11,7 +11,7 @@
         <h5>It looks like you're not logged in. Please log in to continue.</h5>
         <p>Don't have an account yet? <a (click)='openDialog()'>Register</a></p>
     </div>
-    <div class="col-md-12 package-selected">
+    <div class="col-md-12 package-selected" *ngIf='mealPlan && !isLoggedIn'>
 
         <strong><p>You have {{ itemsRemaining }} meals left</p></strong>
         <p *ngIf='itemsRemaining === mealPlan'>Don't like your plan? <a routerLink='/'>Pick another one</a></p>

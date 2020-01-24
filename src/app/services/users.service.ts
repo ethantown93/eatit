@@ -46,4 +46,10 @@ export class UsersService {
      return this.user;
    }
 
+   updateUserInfo(user, id){
+     this.usersDoc = this.afs.doc(`users/${id}`);
+     console.log(this.usersDoc)
+     this.usersDoc.update(user)
+   }
+
 }

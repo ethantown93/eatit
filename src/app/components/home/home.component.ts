@@ -41,7 +41,7 @@ export class HomeComponent implements OnInit {
   }
 
   addPersonalInfo(form: NgForm){
-
+    console.log(form);
     this.auth.userPersonalInfoRegister(form);
     this.loggedIn = localStorage.getItem('isLoggedIn');
 
