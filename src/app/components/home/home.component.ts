@@ -14,7 +14,6 @@ export class HomeComponent implements OnInit {
   email: string;
   password: string;
   hasRegistered: boolean = false;
-  updateNavigation: any;
   loggedIn: string;
   userData: any;
 
@@ -32,10 +31,13 @@ export class HomeComponent implements OnInit {
       this.userData = response;
       localStorage.setItem('isLoggedIn', 'true');
       localStorage.setItem('UID', this.userData.user.uid);
-      this.updateNavigation = this.userData.user.uid;
-      console.log(this.updateNavigation);
+      this.hasRegistered = true;
+    }).catch( err => {
+      this.flash.show(err.message, {
+        cssClass: 'alert-danger', timeout: 4000
+      })
     })
-    this.hasRegistered = true;
+
   }
 
   addPersonalInfo(form: NgForm){
@@ -62,7 +64,7 @@ export class HomeComponent implements OnInit {
     let logged = localStorage.getItem('isLoggedIn');
     console.log(logged)
      if(logged == 'true'){
-      this.auth.updateNavbar(this.updateNavigation);
+      this.auth.updateNavbar('user registered');
         return;
      } else {
         alert('user is not an admin')

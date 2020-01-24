@@ -1,14 +1,56 @@
 <div class="container">
-    <div class="col-md-12 logged-out" *ngIf='isLoggedIn'><h5>It looks like you're not logged in. Please log in to continue.</h5>
+    <div class="container-2" *ngIf='!mealPlan && !isLoggedIn'>
+        <div class="col-md-12">
+            <h3>Uh Oh! It appears that you haven't selected a plan..</h3>
+            <p>Please view our menu, and be sure to return to the homepage to choose your plan when you're ready!.</p>
+            <button class="btn btn-success btn-block" routerLink='/'>Back to home</button>
+        </div>
+    </div>
+
+    <div class="col-md-12 logged-out" *ngIf='isLoggedIn'>
+        <h5>It looks like you're not logged in. Please log in to continue.</h5>
         <p>Don't have an account yet? <a (click)='openDialog()'>Register</a></p>
     </div>
+    <div class="col-md-12 package-selected">
+
+        <strong><p>You have {{ itemsRemaining }} meals left</p></strong>
+        <p *ngIf='itemsRemaining === mealPlan'>Don't like your plan? <a routerLink='/'>Pick another one</a></p>
+        <hr>
+    </div>
+    <div class="wrapper" *ngIf='selectedItems.length > 0'>
+        <div class="col-md-9 meals-selected" >
+            <ul class='meal-selected-ul'>
+                <li *ngFor='let title of selectedItems'> 
+    
+                    <button class='btn btn-sm' (click)='removeItem(title.item , title.src)'><i class="fa fa-times" aria-hidden="true"></i>
+                    </button> <strong> {{ title.item }}</strong></li>
+            </ul>
+        </div>
+        <div class="col-md-3 meal-cart">
+            <button (click)='submitCart()' class="btn btn-primary"><span>Checkout </span><i class="fa fa-shopping-cart" aria-hidden="true"></i>
+        </button>
+        </div>
+    </div>
+
     <div class="col-md-12">
         <div class="card" *ngFor='let item of menuItems'>
             <img class="card-img-top" src='{{ item.src }}' alt='{{ item.alt }}'>
-                <h3>{{ item.title }}</h3>
+            <h3>{{ item.title }}</h3>
+
+            <div class='meal-counter' *ngIf='!isLoggedIn'>
+
+                <div *ngIf='mealPlan && mealsLeft '>
+                    <div class="form-group" (click)='itemSubmit(item.title, item.src)'>
+                        <span><i class="fa fa-plus" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
         </div>
+
     </div>
     <div class='loader-div' *ngIf='loading'>
         <img class='loader' src="./assets/gifs/loader.gif" alt="loader">
-      </div>
+    </div>
 </div>

@@ -38,10 +38,14 @@ export class RegisterComponent implements OnInit {
       this.userData = response;
       localStorage.setItem('isLoggedIn', 'true');
       localStorage.setItem('UID', this.userData.user.uid);
-      this.updateNavigation = this.userData.user.uid;
-      console.log(this.updateNavigation);
+      this.hasRegistered = true;
+    }).catch( err => {
+      console.log(err.message)
+      this.flash.show(err.message, {
+        cssClass: 'alert-danger', timeout: 4000
+      })
     })
-    this.hasRegistered = true;
+
   }
 
   addPersonalInfo(form: NgForm){
@@ -72,7 +76,7 @@ export class RegisterComponent implements OnInit {
   checkAdmin(){
     let logged = localStorage.getItem('isLoggedIn');
      if(logged == 'true'){
-      this.auth.updateNavbar(this.updateNavigation);
+      this.auth.updateNavbar(this.userData.user.uid);
       this.auth.userHasRegistered('user registered');
         return;
      } else {

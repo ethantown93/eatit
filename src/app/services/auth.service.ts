@@ -37,10 +37,9 @@ export class AuthService {
 
   onRegister(email: string, password: string){
     return new Promise((resolve, reject) => {
-      this.afAuth.auth.createUserWithEmailAndPassword(email, password).then(
-        res => {this.userUID = res.user.uid, console.log(this.userUID), resolve(res), err => reject(err)}
-      )
-    })
+      this.afAuth.auth.createUserWithEmailAndPassword(email, password).then(userData => resolve(userData),
+      err => reject(err))
+    });
   }
 
   userPersonalInfoRegister(data){

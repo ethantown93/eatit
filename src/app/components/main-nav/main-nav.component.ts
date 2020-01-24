@@ -33,9 +33,6 @@ export class MainNavComponent implements OnInit {
     
     this.auth.updateNavBar$.subscribe( res => {
       if(res) {
-        console.log(res)
-        // this.userId = res.user.uid;
-        // localStorage.setItem('UID', this.userId)
         this.getNav();
       } else {
         console.log('wang');
