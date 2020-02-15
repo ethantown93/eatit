@@ -1,0 +1,52 @@
+.container {
+    min-height: 850px;
+    font-family: 'Fira Sans', sans-serif;
+    margin-top: 30px;
+    padding-bottom: 40px;
+
+}
+
+.col-md-3 {
+
+    margin-top: 20px;
+    padding: 8px;
+    text-align: center;
+    border: 1px solid #3f3042;
+    border-radius: 5px;
+}
+
+.items-container {
+    max-height: 400px;
+    overflow-x: hidden; 
+    overflow-x: auto; 
+    text-align:justify; 
+}
+
+.card.selected-items-card {
+    height: 110px;
+    width: 90px;
+    font-size: 12px;
+    display: inline-block;
+    margin: 10px;
+}
+
+.card.selected-items-card img {
+    height: 90px;
+    width: 90px;
+}
+
+.card-body.selected-meals {
+    padding: 0px;
+}
+
+.btn.btn-success {
+    width: 100%;
+}
+
+h1 {
+    font-family: 'Fredericka the Great', 'serif';
+}
+
+h3 {
+    font-family: 'Lobster', cursive;
+}

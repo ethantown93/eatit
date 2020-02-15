@@ -1,0 +1,94 @@
+<div class="container" *ngIf='userDataTrue'>
+    <div class="row">
+        <div class="col-md-9">
+            <div id="nav-tab-card" class="tab-pane fade show active">
+                <strong><h2>Name & Shipping</h2></strong>
+                <hr>
+                <form role="form">
+                    <div class="form-group">
+                        <label for="firstName"><strong>Full Name</strong> </label>
+                        <input type="text" name="fullName" placeholder='Full Name' class='form-control' value='{{userData.firstName}} {{userData.lastName}}'>
+                    </div>
+                    <div class="form-group">
+                        <label for="address"><strong>Billing Address:</strong></label>
+                        <div class='input-group'>
+                            <input type="text" name="streetAddress" placeholder='Street Address' class='form-control' value='{{userData.address.streetAddress}}'>
+                            <input type="text" name="city" placeholder='City' class='form-control' value='{{ userData.address.city }}'>
+                            <input type="text" name='state' placeholder='State' class='form-control' value='{{ userData.address.state }}'>
+                            <input type="text" name='zipCode' placeholder='Zip Code' class='form-control' value='{{ userData.address.zipCode }}'>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="address"><strong>Shipping Address:</strong></label>
+                        <div class='input-group'>
+                            <input type="text" name="streetAddress" placeholder='Street Address' class='form-control' value='{{userData.address.streetAddress}}'>
+                            <input type="text" name="city" placeholder='City' class='form-control' value='{{ userData.address.city }}'>
+                            <input type="text" name='state' placeholder='State' class='form-control' value='{{ userData.address.state }}'>
+                            <input type="text" name='zipCode' placeholder='Zip Code' class='form-control' value='{{ userData.address.zipCode }}'>
+                        </div>
+                    </div>
+                    <hr>
+                    <strong><h2>Payment Information:</h2></strong>
+                    <hr>
+                  <div class="form-group">
+                    <label for="username"><strong>Full name (on the card)</strong></label>
+                    <input type="text" name="username" placeholder="Your Name" required class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <label for="cardNumber"><strong>Card number</strong></label>
+                    <div class="input-group">
+                      <input type="text" name="cardNumber" placeholder="Your card number" class="form-control" required>
+                      <div class="input-group-append">
+                        <span class="input-group-text text-muted">
+                                                    <i class="fa fa-cc-visa mx-1"></i>
+                                                    <i class="fa fa-cc-amex mx-1"></i>
+                                                    <i class="fa fa-cc-mastercard mx-1"></i>
+                                                </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-8">
+                      <div class="form-group">
+                        <label><span class="hidden-xs"><strong>Expiration</strong></span></label>
+                        <div class="input-group">
+                          <input type="number" placeholder="MM" name="" class="form-control" required>
+                          <input type="number" placeholder="YY" name="" class="form-control" required>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="form-group mb-4">
+                        <label data-toggle="tooltip" title="Three-digits code on the back of your card">CVV
+                                                    <i class="fa fa-question-circle"></i>
+                                                </label>
+                        <input type="text" required class="form-control">
+                      </div>
+                    </div>
+    
+                  </div>
+                  <button type="button" class="subscribe btn btn-success btn-block rounded-pill shadow-sm"> Place Your Order!  </button>
+                </form>
+              </div>
+        </div>
+        <div class="col-md-3">
+            <h1>Cart</h1>
+            <hr>
+            <div class="items-container">
+                <div class="card selected-items-card" *ngFor='let item of orderSummary'>
+                    <img src="{{item.src}}" class='card-img-top card-img'>
+                    <div class="card-body selected-meals">
+                        <div class="card-title">
+                         {{item.item}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <h3>Your subscription total is:</h3>
+            <p><strong>{{ cartTotal | currency:'USD' }} / week</strong></p>
+            <hr>
+            <a routerLink='/menu' (click)='editMyCart()'>Edit Cart</a>
+        </div>
+    </div>
+</div>
