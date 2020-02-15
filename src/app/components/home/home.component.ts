@@ -3,6 +3,7 @@ import { AuthService } from '../../services/auth.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { MenuService } from '../../services/menu.service';
 
 @Component({
   selector: 'app-home',
@@ -16,11 +17,13 @@ export class HomeComponent implements OnInit {
   hasRegistered: boolean = false;
   loggedIn: string;
   userData: any;
+  userId: string;
 
   constructor(
     private auth: AuthService,
     private flash: FlashMessagesService,
-    private router: Router
+    private router: Router,
+    private menu: MenuService
     ) { }
 
   ngOnInit() {
@@ -41,7 +44,6 @@ export class HomeComponent implements OnInit {
   }
 
   addPersonalInfo(form: NgForm){
-    console.log(form);
     this.auth.userPersonalInfoRegister(form);
     this.loggedIn = localStorage.getItem('isLoggedIn');
 
@@ -62,7 +64,6 @@ export class HomeComponent implements OnInit {
 
   checkAdmin(){
     let logged = localStorage.getItem('isLoggedIn');
-    console.log(logged)
      if(logged == 'true'){
       this.auth.updateNavbar('user registered');
         return;
@@ -71,24 +72,11 @@ export class HomeComponent implements OnInit {
      }  
   }
 
-  plan4(){
-    localStorage.setItem('mealPlan', '4');
-    this.router.navigate(['/menu'])
+  plan(mealPlan){
+      this.userId = localStorage.getItem('UID');
+      this.menu.deleteUserCart(this.userId);
+        localStorage.removeItem('mealPlan');
+        localStorage.setItem('mealPlan', `${mealPlan}`)
+        this.router.navigate(['/menu'])
   }
-
-  plan8(){
-    localStorage.setItem('mealPlan', '8');
-    this.router.navigate(['/menu'])
-  }
-
-  plan12(){
-    localStorage.setItem('mealPlan', '12');
-    this.router.navigate(['/menu'])
-  }
-
-  plan16(){
-    localStorage.setItem('mealPlan', '16');
-    this.router.navigate(['/menu'])
-  }
-
 }

@@ -5,6 +5,7 @@ import { AuthService } from '../../services/auth.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
 
 import { RegisterComponent } from '../register/register.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-menu',
@@ -22,15 +23,37 @@ export class MenuComponent implements OnInit {
   userId: string;
   itemsRemaining: number = 0;
   mealsLeft: boolean = true;
+  cartEdit: boolean = false;
 
   constructor(
     private menu: MenuService,
     private dialog: MatDialog,
     private auth: AuthService,
-    private flash: FlashMessagesService
+    private flash: FlashMessagesService,
+    private router: Router
     ) { }
 
   ngOnInit() {
+    this.userId = localStorage.getItem('UID');
+
+    this.menu.getUserCart(this.userId).subscribe( res => {
+      if(res){
+        this.mealPlan = parseInt(localStorage.getItem('mealPlan'));
+        this.selectedItems = res.cart;
+        this.mealPlan = 0;
+        this.mealsLeft = false;
+        this.cartEdit = true;
+      } else {
+        console.log('error')
+      }
+    })
+
+    // this.menu.backToMenu$.subscribe( res => {
+    //   if(res){
+
+    //     this.selectedItems = res
+    //   }
+    // })
 
     let loggedIn = localStorage.getItem('isLoggedIn')
     this.userId = localStorage.getItem('UID');
@@ -42,9 +65,9 @@ export class MenuComponent implements OnInit {
 
     this.getMealPlan()
 
+
     this.menu.getMenuItems().subscribe( res => {
       if(res) {
-        console.log(res)
         this.menuItems = res;
         this.loading = false;
       } else {
@@ -72,7 +95,6 @@ export class MenuComponent implements OnInit {
     let newItem = { item, src}
     this.selectedItems.push(newItem)
     this.itemsRemaining-- 
-
     if(this.itemsRemaining === 0){
       this.mealsLeft = false;
     }
@@ -84,7 +106,10 @@ export class MenuComponent implements OnInit {
       if(item === this.selectedItems[i].item){
         this.selectedItems.splice(i, 1);
         this.itemsRemaining++
+        this.mealPlan++
         this.mealsLeft = true;
+        this.cartEdit = false;
+
         this.flash.show(`${item} has been removed from your cart.`, {
           cssClass: 'alert-success', timeout: 2000
         })
@@ -110,10 +135,10 @@ export class MenuComponent implements OnInit {
       this.flash.show('It looks like you still have to choose some meals. Please pick your remaning meals before checking out.', {
         cssClass: 'alert-success', timeout: 5000
       })
-      return;
+    } else {
+      this.menu.storeCartItems(this.selectedItems, this.userId);
+      this.router.navigate(['/order-summary']);
     }
-
-    console.log('wing wong')
   }
 
 }

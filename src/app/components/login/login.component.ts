@@ -40,6 +40,7 @@ export class LoginComponent implements OnInit {
       this.checkAdmin()
       this.flash.show("You are now logged in", {
       cssClass: 'alert-success', timeout: 3000 });
+      window.location.reload();
       this.close();
     }).catch( err => {
       this.flash.show(err.message, {

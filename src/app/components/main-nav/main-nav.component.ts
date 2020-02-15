@@ -61,11 +61,13 @@ export class MainNavComponent implements OnInit {
   onLogout(){
     this.auth.logout()
     this.auth.userHasRegistered('user logged out');
+    this.router.navigate(['/'])
     localStorage.clear();
     this.getNav()
     this.flash.show('You have logged out.', {
       cssClass: 'alert-danger', timeout:3000
     })
+    this.router.navigate(['/'])
 
   }
 

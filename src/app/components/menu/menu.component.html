@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="container-2" *ngIf='!mealPlan && !isLoggedIn'>
+    <div class="container-2" *ngIf='!mealPlan && !isLoggedIn && !cartEdit'>
         <div class="col-md-12">
             <h3>Uh Oh! It appears that you haven't selected a plan..</h3>
             <p>Please view our menu, and be sure to return to the homepage to choose your plan when you're ready!.</p>
@@ -13,22 +13,29 @@
     </div>
     <div class="col-md-12 package-selected" *ngIf='mealPlan && !isLoggedIn'>
 
-        <strong><p>You have {{ itemsRemaining }} meals left</p></strong>
+        <strong>
+            <h4 class='meals-left'>You have {{ itemsRemaining }} meals left</h4>
+        </strong>
         <p *ngIf='itemsRemaining === mealPlan'>Don't like your plan? <a routerLink='/'>Pick another one</a></p>
         <hr>
     </div>
     <div class="wrapper" *ngIf='selectedItems.length > 0'>
-        <div class="col-md-9 meals-selected" >
-            <ul class='meal-selected-ul'>
-                <li *ngFor='let title of selectedItems'> 
-    
-                    <button class='btn btn-sm' (click)='removeItem(title.item , title.src)'><i class="fa fa-times" aria-hidden="true"></i>
-                    </button> <strong> {{ title.item }}</strong></li>
-            </ul>
+        <div class="col-md-9 meals-selected">
+            <div class="card selected-items-card" *ngFor='let item of selectedItems'>
+                <img src="{{item.src}}" class='card-img-top card-img'>
+                <div class="card-body selected-meals">
+                    <div class="card-title">
+                        <button class='btn btn-sm' (click)='removeItem(item.item , item.src)'><i class="fa fa-times fa-2x"
+                                aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="col-md-3 meal-cart">
-            <button (click)='submitCart()' class="btn btn-primary"><span>Checkout </span><i class="fa fa-shopping-cart" aria-hidden="true"></i>
-        </button>
+            <button (click)='submitCart()' class="btn btn-primary checkout"><span>Checkout </span><i class="fa fa-shopping-cart"
+                    aria-hidden="true"></i>
+            </button>
         </div>
     </div>
 

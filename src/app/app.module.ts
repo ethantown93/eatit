@@ -28,6 +28,7 @@ import { ContactUsComponent } from './components/contact-us/contact-us.component
 import { MyAccountComponent } from './components/my-account/my-account.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { RegisterComponent } from './components/register/register.component';
+import { OrderSummaryComponent } from './components/order-summary/order-summary.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { RegisterComponent } from './components/register/register.component';
     ContactUsComponent,
     MyAccountComponent,
     MenuComponent,
-    RegisterComponent
+    RegisterComponent,
+    OrderSummaryComponent
   ],
   imports: [
     BrowserModule,

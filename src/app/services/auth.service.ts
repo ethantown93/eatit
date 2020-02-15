@@ -13,7 +13,7 @@ export class AuthService {
     private afAuth: AngularFireAuth,
     private afs: AngularFirestore
     ) {}
-
+    
   loggedIn: AngularFirestoreCollection;
   logIn: Observable<any>;
   loggedOut: AngularFirestoreCollection;

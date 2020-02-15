@@ -20,7 +20,35 @@
     margin-bottom: 40px;
     vertical-align: middle;
     box-shadow: 0 12px 40px -14px #3f3042;
+}
 
+.meals-left {
+    font-family: 'Fredericka the Great', 'serif';
+}
+
+.wrapper {
+    border: 1px solid #3f3042;
+    border-radius: 5px;
+}
+
+.card.selected-items-card {
+    max-height: 150px;
+    max-width: 110px !important;
+    margin: 10px !important;
+}
+
+.card.selected-items-card img {
+    height: 100px;
+    width: 110px;
+}
+
+.card-body.selected-meals {
+    padding: 0;
+    font-size: 12px;
+}
+
+.fa.fa-times.fa-2x {
+    padding-top: 5px;
 }
 
 h3 {
@@ -79,18 +107,9 @@ a {
     text-align: center;
 }
 .col-md-9.meals-selected, .col-md-3.meal-cart {
-    display: inline-block
-}
-
-.meal-selected-ul {
-    text-align: center;
-}
-
-.meal-selected-ul li {
-    list-style: none;
     display: inline-block;
-    padding: 10px;
 }
+
 .container-2 {
     text-align: center;
     height: 100%;
@@ -128,8 +147,29 @@ a {
         margin-top: 10px;
     }
 
-    .meal-selected-ul li {
-        padding: 2px;
-        font-size: 15px;
+
+    .card.selected-items-card {
+        max-height: 105px;
+        max-width: 71px !important;
+        margin: 7px;
+
+    }
+    
+    .card.selected-items-card img {
+        height: 70px;
+        width: 70px;
+    }
+    
+    .card-body.selected-meals {
+        padding: 0;
+        font-size: 12px;
+    }
+    
+    .fa.fa-times.fa-2x {
+        padding-top: 0;
+    }
+
+    .btn.btn-primary.checkout {
+        margin: 10px;
     }
 }

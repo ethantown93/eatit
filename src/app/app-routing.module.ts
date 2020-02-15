@@ -5,6 +5,7 @@ import { Error404Component } from './components/error404/error404.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
 import { MyAccountComponent } from './components/my-account/my-account.component';
 import { MenuComponent } from './components/menu/menu.component';
+import { OrderSummaryComponent } from './components/order-summary/order-summary.component';
 
 
 
@@ -24,6 +25,10 @@ const routes: Routes = [
   {
     path: 'menu',
     component: MenuComponent
+  },
+  {
+    path: 'order-summary',
+    component: OrderSummaryComponent
   },
   {
     path: '**',
