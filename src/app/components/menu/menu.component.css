@@ -13,7 +13,7 @@
 }
 
 .card {
-    height: 400px;
+    height: 450px;
     width: 300px;
     display: inline-block;
     margin: 30px;
@@ -29,6 +29,11 @@
 .wrapper {
     border: 1px solid #3f3042;
     border-radius: 5px;
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    background-color: #e9e3c9;
 }
 
 .card.selected-items-card {
@@ -43,9 +48,18 @@
 }
 
 .card-body.selected-meals {
+    display: flex;
     padding: 0;
     font-size: 12px;
 }
+
+.card-body.selected-meals .card-title {
+    display: flex;
+    margin: auto;
+    margin-top: 5px;
+    font-family: 'Fredericka the Great', 'serif';
+}
+
 
 .fa.fa-times.fa-2x {
     padding-top: 5px;
@@ -82,6 +96,20 @@ a {
     text-align: center;
 }
 
+.meal-counter {
+    display: flex;
+}
+
+.meal-counter form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-control.item-number {
+    border: none;
+}
+
 .form-group {
     display: inline-block;
 }
@@ -90,12 +118,10 @@ a {
     padding: 5px 8px;
     border-radius: 8px;
     cursor: pointer;
-}
-
-.fa.fa-plus {
     color: #28a745;
     border: 2px solid #28a745;
 }
+
 
 .fa.fa-times {
     color: #dc3545;
@@ -132,7 +158,7 @@ a {
     .card {
         margin: auto;
         margin-top: 30px;
-        height: 350px;
+        height: 370px;
         width: 250px;
     }
 

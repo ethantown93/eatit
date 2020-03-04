@@ -91,33 +91,48 @@ export class MenuComponent implements OnInit {
     });
   }
 
-  itemSubmit(item, src){
-    let newItem = { item, src}
-    this.selectedItems.push(newItem)
-    this.itemsRemaining-- 
-    if(this.itemsRemaining === 0){
-      this.mealsLeft = false;
+  itemSubmit(number,item, src){
+    let x = this.itemsRemaining - number.itemNumber;
+    if(x < 0){
+      this.flash.show(`You cannot add that many meals to your cart.. Please change your number of meals.`, {
+        cssClass: 'alert-danger', timeout: 2000
+      })
+    } else {
+        let mealNumber = number.itemNumber;
+        let newItem = {mealNumber, item, src}
+        this.selectedItems.push(newItem)
+        this.calcItemsLeft(mealNumber);
+        if(this.itemsRemaining === 0){
+          this.mealsLeft = false;
+        }
     }
   }
 
-  removeItem(item){
+  removeItem(item, mealNumber){
 
     for ( let i = 0; i < this.selectedItems.length; i++){
       if(item === this.selectedItems[i].item){
-        this.selectedItems.splice(i, 1);
-        this.itemsRemaining++
-        this.mealPlan++
-        this.mealsLeft = true;
-        this.cartEdit = false;
-
-        this.flash.show(`${item} has been removed from your cart.`, {
-          cssClass: 'alert-success', timeout: 2000
-        })
+        if( mealNumber > 1){
+          this.selectedItems.splice(i, 1);
+          this.itemsRemaining = this.itemsRemaining + mealNumber;
+          this.mealPlan = this.mealPlan + mealNumber;
+          this.cartRemoveItems();
+        } else {
+          this.selectedItems.splice(i, 1);
+          this.itemsRemaining++
+          this.mealPlan++
+          this.cartRemoveItems();
+        }
         return;
       } else {
         console.log('error')
       }
     }
+  }
+
+  cartRemoveItems(){
+    this.mealsLeft = true;
+    this.cartEdit = false;
   }
 
   getMealPlan(){
@@ -126,7 +141,6 @@ export class MenuComponent implements OnInit {
       this.itemsRemaining = this.mealPlan
     } else {
       this.mealPlan = 0;
-      console.log('nope')
     }
   }
 
@@ -139,6 +153,10 @@ export class MenuComponent implements OnInit {
       this.menu.storeCartItems(this.selectedItems, this.userId);
       this.router.navigate(['/order-summary']);
     }
+  }
+
+  calcItemsLeft(subtract){
+    this.itemsRemaining = this.itemsRemaining - subtract;
   }
 
 }

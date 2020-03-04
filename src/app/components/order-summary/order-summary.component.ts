@@ -12,7 +12,7 @@ export class OrderSummaryComponent implements OnInit {
 
   orderSummary;
   userId: string;
-  cart: string;
+  cartItems: number = 0;
   cartTotal: number;
   userData;
   userDataTrue: boolean = false;
@@ -35,13 +35,17 @@ export class OrderSummaryComponent implements OnInit {
       if(res){
         this.orderSummary = res.cart;
 
-        if(this.orderSummary.length === 4){
+        this.orderSummary.forEach(item => {
+          this.cartItems = this.cartItems + item.mealNumber
+        })
+
+        if(this.cartItems === 4){
           this.cartTotal = 56;
-        } else if(this.orderSummary.length === 8){
+        } else if(this.cartItems === 8){
           this.cartTotal = 96;
-        } else if(this.orderSummary.length === 12){
+        } else if(this.cartItems === 12){
           this.cartTotal = 120;
-        } else if(this.orderSummary.length === 16){
+        } else if(this.cartItems === 16){
           this.cartTotal = 128;
         } else {
           console.log('error')

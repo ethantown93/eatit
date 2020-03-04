@@ -71,4 +71,8 @@ export class MainNavComponent implements OnInit {
 
   }
 
+  testClick(data){
+    console.log(data)
+  }
+
 }
